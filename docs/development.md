@@ -51,11 +51,17 @@ Copy `.env.example` to `.env.local` and fill in:
 
 | Variable | Where to get it |
 |---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | Supabase dashboard → Project Settings → API |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Same page. **This key is public by design** — RLS is what protects the data. |
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase dashboard → Settings → API (Project URL), e.g. `https://abcdefgh.supabase.co` |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Settings → API Keys → **Publishable key** (`sb_publishable_…`). **Public by design** — RLS is what protects the data. |
 
-Never put the `service_role` key in this app. It bypasses RLS entirely, and
-anything prefixed `NEXT_PUBLIC_` is shipped to the browser.
+Supabase is migrating from the legacy JWT key pair (`anon` / `service_role`) to
+`sb_publishable_…` / `sb_secret_…`, with the legacy keys deprecated at the end of
+2026. Use the publishable key; a legacy `anon` key works identically if that's
+what your dashboard shows.
+
+**Never put the secret key (`sb_secret_…` / `service_role`) in this app.** It
+bypasses RLS entirely, and anything prefixed `NEXT_PUBLIC_` is shipped to the
+browser.
 
 ## Project layout
 
