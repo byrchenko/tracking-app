@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
+import { AppNav } from "@/components/app-nav";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
@@ -48,7 +49,10 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${inter.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col font-sans">
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          {children}
+          <AppNav />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

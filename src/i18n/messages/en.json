@@ -23,7 +23,8 @@
     "hourlyWalksHint": "Stand up and walk 3 min once per hour of work",
     "complete": "Chain closed",
     "incomplete": "Chain not closed",
-    "streak": "Chain: {days}d"
+    "streak": "Chain: {days}d",
+    "saveFailed": "Could not save. Try again."
   },
   "days": {
     "strength_a": "Strength A",
@@ -40,7 +41,8 @@
     "starting": "Starting…",
     "startDate": "Start date",
     "startDateHint": "The weekly cycle runs Mon–Sun, so a Monday start lines up best.",
-    "startFailed": "Could not start the program. Try again."
+    "startFailed": "Could not start the program. Try again.",
+    "finished": "Program finished"
   },
   "session": {
     "start": "Start session",
@@ -53,7 +55,10 @@
     "restTimer": "{seconds} sec",
     "pain": "Pain",
     "painHint": "Sharp pain in a knee, lower back, elbow or heel — stop that exercise for the day.",
-    "done": "Done"
+    "done": "Done",
+    "nothingScheduled": "Nothing scheduled today",
+    "perSide": "per side",
+    "max": "max"
   },
   "benchmarks": {
     "title": "Entry benchmark",

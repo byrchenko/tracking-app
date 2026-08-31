@@ -3,9 +3,9 @@
 How the code is organized and why. For the *intended* design ahead of the current
 build, see [`plan.md`](plan.md); this file describes what exists.
 
-**Build status:** phases 0 (foundation), 1 (data model, RLS, auth) and 2 (program
-seed, 42-day grid) complete. Phases 3–6 pending — see the phase table in
-`plan.md`.
+**Build status:** phases 0–3 complete (foundation; data model, RLS and auth;
+program seed and 42-day grid; daily chain and Today screen). The app is usable
+day to day from here. Phases 4–6 pending — see the phase table in `plan.md`.
 
 ## Layout
 
@@ -93,6 +93,29 @@ would prescribe half the work.
 `src/lib/program/seed.integration.test.ts` transcribes the document's tables a
 second time, independently, and asserts the seeded rows match. If the seed and
 the program drift apart, that test names the row that disagrees.
+
+## The daily chain
+
+`lib/program/streak.ts` holds the streak maths as pure functions, tested to the
+same standard as the schedule. Two rules in there are judgement calls worth
+knowing:
+
+**An incomplete *today* does not break the streak.** The day is not over;
+showing "0" at 9am because the steps aren't logged yet would be both wrong and
+demoralising. Counting starts at today when today is done, and at yesterday
+otherwise. An incomplete *yesterday* does break it.
+
+**A week in progress reads "3/3", not "3/7".** Future days are excluded from the
+denominator so an unfinished week never looks like failure.
+
+`daily_chain.is_complete` is a **generated column**, so Postgres — not the app —
+decides whether the chain held. `features/chain/chain.integration.test.ts`
+asserts the database's rule and the pure logic agree; if they drift, the streak
+shown to the user would be a lie.
+
+Every control in the checklist writes optimistically. Waiting on a round trip to
+tick a checkbox is the difference between an app used daily and one abandoned in
+week two.
 
 ## Auth
 
