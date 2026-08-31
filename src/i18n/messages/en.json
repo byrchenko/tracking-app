@@ -1,0 +1,82 @@
+{
+  "app": {
+    "title": "Operation Base",
+    "subtitle": "6 weeks",
+    "rule": "The winner is not whoever did the hardest workout, but whoever did not break the chain in 42 days."
+  },
+  "nav": {
+    "today": "Today",
+    "chain": "Chain",
+    "session": "Session",
+    "progress": "Progress",
+    "benchmarks": "Benchmark",
+    "settings": "Settings"
+  },
+  "chain": {
+    "title": "Daily chain",
+    "description": "Done every single day, no exceptions.",
+    "steps": "Steps",
+    "stepsTarget": "7000 steps",
+    "mobility": "5 min mobility",
+    "mobilityHint": "Cat-cow, hip circles, thoracic opening",
+    "hourlyWalks": "Walk breaks",
+    "hourlyWalksHint": "Stand up and walk 3 min once per hour of work",
+    "complete": "Chain closed",
+    "incomplete": "Chain not closed",
+    "streak": "Chain: {days}d"
+  },
+  "days": {
+    "strength_a": "Strength A",
+    "strength_b": "Strength B",
+    "walk": "Walk 40 min",
+    "long_walk": "Long walk",
+    "rest": "Rest"
+  },
+  "program": {
+    "dayOf": "Day {day} of {total}",
+    "week": "Week {week}",
+    "notStarted": "Program not started yet"
+  },
+  "session": {
+    "start": "Start session",
+    "resume": "Resume",
+    "finish": "Finish",
+    "sets": "Sets",
+    "reps": "Reps",
+    "weight": "Weight",
+    "rest": "Rest",
+    "restTimer": "{seconds} sec",
+    "pain": "Pain",
+    "painHint": "Sharp pain in a knee, lower back, elbow or heel — stop that exercise for the day.",
+    "done": "Done"
+  },
+  "benchmarks": {
+    "title": "Entry benchmark",
+    "start": "Start",
+    "end": "Week 6",
+    "walk_1500m": "1.5 km walk",
+    "bench_pushups": "Bench push-ups",
+    "squats_1min": "Squats in 1 min",
+    "bar_hang": "Bar hang",
+    "plank": "Plank",
+    "body_weight": "Body weight",
+    "waist": "Waist"
+  },
+  "units": {
+    "kg": "kg",
+    "cm": "cm",
+    "m": "m",
+    "sec": "sec",
+    "min": "min",
+    "steps": "steps",
+    "reps": "reps"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "loading": "Loading…",
+    "offline": "Offline — changes are saved locally",
+    "language": "Language"
+  }
+}

@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fbfbfa;
+  --surface: #ffffff;
+  --border: #e4e4e1;
+  --foreground: #1a1a18;
+  --muted: #6b6b66;
+  --accent: #1f6f4a;
+  --accent-fg: #ffffff;
+  --danger: #b3261e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #111110;
+    --surface: #1a1a19;
+    --border: #2e2e2c;
+    --foreground: #ededea;
+    --muted: #9a9a94;
+    --accent: #4ea87a;
+    --accent-fg: #06180f;
+    --danger: #f2836f;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-sans);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/*
+ * Logging happens mid-workout, often one-handed with sweaty hands. Interactive
+ * controls get a 44px minimum touch target rather than relying on per-component
+ * padding to get there.
+ */
+@media (pointer: coarse) {
+  button,
+  a[role="button"],
+  input[type="checkbox"],
+  select {
+    min-height: 44px;
+  }
+}
