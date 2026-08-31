@@ -126,8 +126,12 @@
       "otp_expired": "That link has expired or was already used. Each new email cancels the previous ones — open the most recent.",
       "access_denied": "The link was rejected. Request a new email.",
       "pkce_verifier_missing": "Open the link in the same browser you requested it from.",
-      "generic": "Sign-in failed. Request a new link."
-    }
+      "generic": "Sign-in failed. Request a new link.",
+      "google_unavailable": "Google sign-in is unavailable. Check that the provider is enabled in Supabase."
+    },
+    "continueWithGoogle": "Continue with Google",
+    "redirecting": "Redirecting…",
+    "orEmail": "or by email"
   },
   "weekdays": {
     "mon": "Mon",
