@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 
 const ITEMS = [
   { href: "/", key: "today" },
+  { href: "/session", key: "session" },
   { href: "/chain", key: "chain" },
 ] as const;
 

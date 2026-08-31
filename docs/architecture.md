@@ -3,9 +3,10 @@
 How the code is organized and why. For the *intended* design ahead of the current
 build, see [`plan.md`](plan.md); this file describes what exists.
 
-**Build status:** phases 0–3 complete (foundation; data model, RLS and auth;
-program seed and 42-day grid; daily chain and Today screen). The app is usable
-day to day from here. Phases 4–6 pending — see the phase table in `plan.md`.
+**Build status:** phases 0–4 complete (foundation; data model, RLS and auth;
+program seed and 42-day grid; daily chain and Today screen; progression engine
+and session runner). Phases 5–6 (offline sync, progress charts) pending — see
+the phase table in `plan.md`.
 
 ## Layout
 
@@ -93,6 +94,44 @@ would prescribe half the work.
 `src/lib/program/seed.integration.test.ts` transcribes the document's tables a
 second time, independently, and asserts the seeded rows match. If the seed and
 the program drift apart, that test names the row that disagrees.
+
+## The progression engine
+
+`lib/progression/engine.ts` is the highest-stakes code in the app — a wrong
+answer means a wrong weight on the bar — so it is pure, dependency-free and
+covered by 28 tests transcribed directly from ПРАВИЛА ПРОГРЕСІЇ.
+
+**Targets are computed, not stored.** `progression_state` is a cache; the engine
+recomputes from set history, so fixing a rule corrects existing users without a
+data migration.
+
+**Progression follows the calendar, not attendance.** The program is explicit:
+"пропустив день — ідеш далі за планом. Ніяких подвійних обсягів для
+надолуження." A missed week does not hold the schedule back.
+
+**Step-ups and unlocks are suggested, never applied.** Rule 2 says "коли 5×15
+стає легко, **бери** 20 кг" — the athlete takes it. The engine returns
+`readyToStepUp` and `unlockAvailable`; the UI offers them. Silently putting more
+weight on the bar because a rule fired is not a decision an app should make for
+someone.
+
+**Bodyweight exercises rise to the cap and hold** rather than resetting, because
+there is no ladder to climb. That is what lets australian rows reach 3×15 — the
+second half of rule 3's unlock condition.
+
+One honest gap: the document specifies "+2 повторення щотижня" for reps but
+gives **no increment for timed holds**. The +5 s/week used for the dip support
+hold is this app's interpretation, and it lives in the seed so it can be changed
+as data rather than code.
+
+## The rest timer
+
+"Відпочинок між підходами 90 сек." Nothing counts down internally — a deadline
+timestamp is stored and the remaining time is recomputed from the wall clock on
+every tick and on `visibilitychange`. A locked phone throttles or stops
+intervals, so a decrementing counter would drift; deriving from the clock stays
+correct on wake, which is the normal case when the phone goes in a pocket
+between sets.
 
 ## The daily chain
 

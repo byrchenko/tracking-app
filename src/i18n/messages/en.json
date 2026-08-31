@@ -58,7 +58,23 @@
     "done": "Done",
     "nothingScheduled": "Nothing scheduled today",
     "perSide": "per side",
-    "max": "max"
+    "max": "max",
+    "startRest": "Rest",
+    "stopRest": "Reset",
+    "logSet": "Log set",
+    "seconds": "Sec",
+    "sec": "s",
+    "kg": "kg",
+    "effort": "How it felt",
+    "saveFailed": "Could not save.",
+    "finished": "Session finished",
+    "readyToStepUp": "5×15 felt easy — you can take {weight} kg.",
+    "unlockAvailable": "Condition met — you can start the next progression.",
+    "rpe": {
+      "easy": "Easy",
+      "ok": "OK",
+      "hard": "Hard"
+    }
   },
   "benchmarks": {
     "title": "Entry benchmark",
