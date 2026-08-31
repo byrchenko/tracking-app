@@ -121,8 +121,12 @@
     "linkSent": "Check {email} for your sign-in link.",
     "signOut": "Sign out",
     "errors": {
-      "invalid_link": "That link was incomplete. Try again.",
-      "expired_link": "That link has expired or was already used. Request a new one."
+      "invalid_link": "That link was incomplete. Request a new email.",
+      "expired_link": "That link has expired or was already used. Request a new one.",
+      "otp_expired": "That link has expired or was already used. Each new email cancels the previous ones — open the most recent.",
+      "access_denied": "The link was rejected. Request a new email.",
+      "pkce_verifier_missing": "Open the link in the same browser you requested it from.",
+      "generic": "Sign-in failed. Request a new link."
     }
   },
   "weekdays": {
