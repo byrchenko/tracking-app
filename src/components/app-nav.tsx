@@ -8,6 +8,8 @@ const ITEMS = [
   { href: "/", key: "today" },
   { href: "/session", key: "session" },
   { href: "/chain", key: "chain" },
+  { href: "/progress", key: "progress" },
+  { href: "/settings", key: "settings" },
 ] as const;
 
 export function AppNav() {

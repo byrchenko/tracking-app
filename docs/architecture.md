@@ -3,10 +3,10 @@
 How the code is organized and why. For the *intended* design ahead of the current
 build, see [`plan.md`](plan.md); this file describes what exists.
 
-**Build status:** phases 0–4 complete (foundation; data model, RLS and auth;
-program seed and 42-day grid; daily chain and Today screen; progression engine
-and session runner). Phases 5–6 (offline sync, progress charts) pending — see
-the phase table in `plan.md`.
+**Build status:** phases 0–4 and 6 complete. **Phase 5 (offline sync) is
+deliberately deferred** — the app is online-only for now and everything else is
+finished around it, exactly as the plan intended. See the phase table in
+`plan.md`.
 
 ## Layout
 
@@ -123,6 +123,29 @@ One honest gap: the document specifies "+2 повторення щотижня" 
 gives **no increment for timed holds**. The +5 s/week used for the dip support
 hold is this app's interpretation, and it lives in the seed so it can be changed
 as data rather than code.
+
+## Charts
+
+Four rules govern every chart here, and each rules out a tempting alternative:
+
+**Weight and waist are separate charts, never a dual axis.** Two y-scales on one
+plot invent a correlation that isn't in the data — kilograms and centimetres have
+no honest shared scale.
+
+**The норматив is a table, not a chart.** Its seven tests are measured in
+seconds, reps, kilograms and centimetres. There is no axis they could share. The
+delta column encodes *direction*: a faster 1.5 km walk and a longer bar hang are
+both improvements even though one number fell and the other rose, and an arrow
+plus a screen-reader label carry that, not colour alone.
+
+**Every chart has a table view.** A tooltip enhances; it must never be the only
+way to read a value.
+
+**One series, one colour.** Colouring bars darker-where-bigger would double-encode
+height as hue. The accent was moved from `#1f6f4a` to `#1a7a4c` because the
+former sits at OKLCH chroma 0.097 — just under the 0.10 floor where a hue starts
+reading as grey. Both values were checked with the palette validator against the
+light and dark surfaces; the new one also clears WCAG AA for text at 5.16:1.
 
 ## The rest timer
 

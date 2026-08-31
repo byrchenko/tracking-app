@@ -6,9 +6,12 @@
   --border: #e4e4e1;
   --foreground: #1a1a18;
   --muted: #6b6b66;
-  --accent: #1f6f4a;
+  --accent: #1a7a4c;
   --accent-fg: #ffffff;
   --danger: #b3261e;
+  /* Chart chrome: hairline grid one shade off the surface, recessive axes. */
+  --chart-grid: #ececea;
+  --chart-axis: #8a8a84;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,6 +24,8 @@
     --accent: #4ea87a;
     --accent-fg: #06180f;
     --danger: #f2836f;
+    --chart-grid: #2a2a28;
+    --chart-axis: #77776f;
   }
 }
 
@@ -33,6 +38,8 @@
   --color-accent: var(--accent);
   --color-accent-fg: var(--accent-fg);
   --color-danger: var(--danger);
+  --color-chart-grid: var(--chart-grid);
+  --color-chart-axis: var(--chart-axis);
   --font-sans: var(--font-sans);
 }
 

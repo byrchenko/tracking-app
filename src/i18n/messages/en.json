@@ -86,7 +86,14 @@
     "bar_hang": "Bar hang",
     "plank": "Plank",
     "body_weight": "Body weight",
-    "waist": "Waist"
+    "waist": "Waist",
+    "test": "Test",
+    "delta": "Change",
+    "improved": "improved",
+    "worsened": "worse",
+    "unchanged": "unchanged",
+    "enterStart": "Record your starting numbers before day 1.",
+    "enterEnd": "Repeat the same tests and record the result."
   },
   "units": {
     "kg": "kg",
@@ -126,5 +133,24 @@
     "fri": "Fri",
     "sat": "Sat",
     "sun": "Sun"
+  },
+  "progress": {
+    "weight": "Weight",
+    "waist": "Waist",
+    "chainByWeek": "Chain by week",
+    "daysComplete": "Days closed",
+    "week": "Week {week}",
+    "weekLabel": "Week",
+    "showTable": "Show table",
+    "hideTable": "Hide table",
+    "noData": "No data yet",
+    "date": "Date",
+    "todayMeasurements": "Today's measurements",
+    "saved": "Saved"
+  },
+  "settings": {
+    "export": "Export data",
+    "exportHint": "Everything you've logged, as one JSON file. Six weeks of work shouldn't stay locked in someone else's database.",
+    "downloadJson": "Download JSON"
   }
 }
