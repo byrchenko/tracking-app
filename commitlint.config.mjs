@@ -4,7 +4,7 @@
  * semantic-release derives version bumps from these types, so a commit that
  * doesn't parse is a commit that silently won't trigger a release.
  */
-export default {
+const config = {
   extends: ["@commitlint/config-conventional"],
   rules: {
     "type-enum": [
@@ -48,3 +48,5 @@ export default {
     "body-max-line-length": [0],
   },
 };
+
+export default config;
