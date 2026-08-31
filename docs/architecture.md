@@ -3,8 +3,9 @@
 How the code is organized and why. For the *intended* design ahead of the current
 build, see [`plan.md`](plan.md); this file describes what exists.
 
-**Build status:** phases 0 (foundation) and 1 (data model, RLS, auth) complete.
-Phases 2–6 pending — see the phase table in `plan.md`.
+**Build status:** phases 0 (foundation), 1 (data model, RLS, auth) and 2 (program
+seed, 42-day grid) complete. Phases 3–6 pending — see the phase table in
+`plan.md`.
 
 ## Layout
 
@@ -72,6 +73,26 @@ from `weekIndex % 2` would break on a mid-week start.
 
 **Day types come from the calendar weekday**, so Mon/Wed/Fri are always strength
 days and Sunday is always rest, matching the program's Пн–Нд table.
+
+## The seeded program
+
+`supabase/seed/001_operation_base.sql` transcribes the program document into the
+template tables. Two things there are worth knowing:
+
+**The week-3 swap is data, not code.** "Станова з гирею (тиждень 1–2) → Мах гирею
+(з тижня 3)" is two rows sharing `order_index` 1 on Day A with complementary
+`active_from_week`/`active_to_week` windows. The unique constraint is
+`(program_day_id, order_index, active_from_week)` precisely to allow this — the
+original `(program_day_id, order_index)` made it impossible to express, and the
+database rejected the seed until it was fixed.
+
+**`per_side` exists because the document says "на ногу" and "на руку".** Without
+it, "3×10" reads as 30 reps where the program means 60, and the session runner
+would prescribe half the work.
+
+`src/lib/program/seed.integration.test.ts` transcribes the document's tables a
+second time, independently, and asserts the seeded rows match. If the seed and
+the program drift apart, that test names the row that disagrees.
 
 ## Auth
 

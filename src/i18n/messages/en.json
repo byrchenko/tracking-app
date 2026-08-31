@@ -35,7 +35,12 @@
   "program": {
     "dayOf": "Day {day} of {total}",
     "week": "Week {week}",
-    "notStarted": "Program not started yet"
+    "notStarted": "Program not started yet",
+    "start": "Start program",
+    "starting": "Starting…",
+    "startDate": "Start date",
+    "startDateHint": "The weekly cycle runs Mon–Sun, so a Monday start lines up best.",
+    "startFailed": "Could not start the program. Try again."
   },
   "session": {
     "start": "Start session",
@@ -91,5 +96,14 @@
       "invalid_link": "That link was incomplete. Try again.",
       "expired_link": "That link has expired or was already used. Request a new one."
     }
+  },
+  "weekdays": {
+    "mon": "Mon",
+    "tue": "Tue",
+    "wed": "Wed",
+    "thu": "Thu",
+    "fri": "Fri",
+    "sat": "Sat",
+    "sun": "Sun"
   }
 }

@@ -15,7 +15,7 @@ export default defineConfig({
     environment: "node",
     setupFiles: ["./vitest.rls.setup.ts"],
     globals: true,
-    include: ["src/**/*.rls.test.ts"],
+    include: ["src/**/*.{rls,integration}.test.ts"],
     // Signing in, writing and cleaning up over the network is not instant.
     testTimeout: 30_000,
     hookTimeout: 30_000,

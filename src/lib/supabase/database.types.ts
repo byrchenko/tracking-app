@@ -237,6 +237,7 @@ export type Database = {
           exercise_id: string
           id: string
           order_index: number
+          per_side: boolean
           program_day_id: string
           progression: Json | null
           target_distance_m: number | null
@@ -251,6 +252,7 @@ export type Database = {
           exercise_id: string
           id?: string
           order_index: number
+          per_side?: boolean
           program_day_id: string
           progression?: Json | null
           target_distance_m?: number | null
@@ -265,6 +267,7 @@ export type Database = {
           exercise_id?: string
           id?: string
           order_index?: number
+          per_side?: boolean
           program_day_id?: string
           progression?: Json | null
           target_distance_m?: number | null

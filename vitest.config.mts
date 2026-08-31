@@ -15,6 +15,6 @@ export default defineConfig({
     // Integration tests that hit the real Supabase project run separately
     // via `npm run test:rls` — they need network and secrets, and must not
     // slow down or flake the fast unit loop.
-    exclude: ["**/node_modules/**", "src/**/*.rls.test.ts"],
+    exclude: ["**/node_modules/**", "src/**/*.{rls,integration}.test.ts"],
   },
 });

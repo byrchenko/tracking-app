@@ -36,3 +36,16 @@ test.describe("locale routing", () => {
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
   });
 });
+
+test.describe("chain page", () => {
+  test("prompts a signed-out visitor to sign in", async ({ page }) => {
+    await page.goto("/uk/chain");
+    await expect(page.getByRole("heading", { name: "Ланцюг" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Вхід" })).toBeVisible();
+  });
+
+  test("renders the chain page in English", async ({ page }) => {
+    await page.goto("/en/chain");
+    await expect(page.getByRole("heading", { name: "Chain" })).toBeVisible();
+  });
+});
