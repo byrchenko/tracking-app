@@ -152,5 +152,13 @@
     "export": "Export data",
     "exportHint": "Everything you've logged, as one JSON file. Six weeks of work shouldn't stay locked in someone else's database.",
     "downloadJson": "Download JSON"
+  },
+  "errors": {
+    "title": "Something went wrong",
+    "generic": "Try again. If it keeps happening, reload the page.",
+    "misconfigured": "The app isn't connected to its database. Check NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY in your deployment settings.",
+    "retry": "Try again",
+    "notFound": "Page not found",
+    "backHome": "Back to today"
   }
 }

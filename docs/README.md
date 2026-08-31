@@ -7,6 +7,7 @@
 | [`architecture.md`](architecture.md) | How the code is actually organized, and why. Updated as the build progresses. |
 | [`development.md`](development.md) | Setup, commands, environment variables, how to run tests. |
 | [`contributing.md`](contributing.md) | Branching model, commit conventions, how releases happen. |
+| [`deployment.md`](deployment.md) | Vercel setup, required env vars, and the Supabase redirect step that is always missed. |
 | [`decisions/`](decisions/) | Architecture decision records — one file per decision that would otherwise get re-litigated. |
 
 ## Reading order
