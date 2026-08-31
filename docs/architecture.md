@@ -3,8 +3,8 @@
 How the code is organized and why. For the *intended* design ahead of the current
 build, see [`plan.md`](plan.md); this file describes what exists.
 
-**Build status:** phase 0 (foundation) complete. Phases 1–6 pending — see the
-phase table in `plan.md`.
+**Build status:** phases 0 (foundation) and 1 (data model, RLS, auth) complete.
+Phases 2–6 pending — see the phase table in `plan.md`.
 
 ## Layout
 
@@ -19,6 +19,13 @@ src/
 ├─ features/                   Vertical slices (chain, session, progression, …)
 ├─ lib/
 │  ├─ program/schedule.ts      42-day calendar math — pure, tested
+│  ├─ supabase/
+│  │  ├─ client.ts            Browser client
+│  │  ├─ server.ts            Per-request server client (async cookies)
+│  │  ├─ proxy.ts             Session refresh, called from src/proxy.ts
+│  │  ├─ env.ts               Validated env access
+│  │  ├─ database.types.ts    Generated from the schema
+│  │  └─ rls.rls.test.ts      Cross-user RLS tests
 │  └─ utils.ts                 `cn()` class merge helper
 ├─ i18n/
 │  ├─ routing.ts               Locale list, default locale
@@ -65,6 +72,24 @@ from `weekIndex % 2` would break on a mid-week start.
 
 **Day types come from the calendar weekday**, so Mon/Wed/Fri are always strength
 days and Sunday is always rest, matching the program's Пн–Нд table.
+
+## Auth
+
+Passwordless magic link. `src/app/auth/confirm/route.ts` exchanges the emailed
+`token_hash` for a session; it lives **outside** `[locale]` and is excluded from
+the proxy matcher so next-intl never rewrites the URL Supabase was told to
+redirect to.
+
+Its `next` parameter is attacker-controlled, so it is validated to be a
+same-origin absolute path — including rejecting `//host` and `/\host`, which
+start with a slash but resolve to another origin.
+
+Session refresh happens in `src/proxy.ts`. Server Components cannot set
+cookies, so the proxy is the only place a rotated token actually gets
+persisted; without it sessions expire mid-use and produce random logouts.
+The proxy composes with next-intl by mutating the response next-intl returns
+rather than building a new one, so a locale redirect still carries auth
+cookies.
 
 ## Testing strategy
 

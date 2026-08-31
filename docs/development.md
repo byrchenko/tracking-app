@@ -19,6 +19,7 @@
 | `npm run test` | Vitest unit tests, single run |
 | `npm run test:watch` | Vitest in watch mode |
 | `npm run test:e2e` | Playwright end-to-end tests |
+| `npm run test:rls` | Cross-user RLS tests against the real Supabase project |
 | `npm run typegen` | Regenerate `PageProps`/`LayoutProps` route types |
 | `npm run check` | typecheck + lint + unit tests, as CI runs them |
 
@@ -44,6 +45,23 @@ libXcomposite.so.1`. CI installs these itself via `playwright install --with-dep
 There is no Docker in this environment, so there is no local Supabase stack —
 see [`decisions/0003-rls-tests-against-remote.md`](decisions/0003-rls-tests-against-remote.md)
 for how RLS is tested instead.
+
+## RLS test fixtures
+
+`npm run test:rls` signs in as two real accounts and asserts neither can see
+the other's rows. To set them up in a new environment:
+
+1. Pick a password and add it to `.env.local` as `RLS_TEST_PASSWORD`.
+2. Run `supabase/seed/rls_test_users.sql` in the Supabase SQL Editor,
+   substituting that password for the placeholder.
+3. Add `RLS_TEST_EMAIL_A` and `RLS_TEST_EMAIL_B` to `.env.local`.
+
+The suite **skips itself** when those variables are absent, so a fresh
+checkout and fork PRs stay green without access to the project.
+
+The tests never use a `service_role` key — they run as ordinary authenticated
+users through PostgREST, the same path a real browser takes. A test that could
+bypass RLS would prove nothing about RLS.
 
 ## Environment variables
 

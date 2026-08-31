@@ -78,5 +78,18 @@
     "loading": "Loading…",
     "offline": "Offline — changes are saved locally",
     "language": "Language"
+  },
+  "auth": {
+    "title": "Sign in",
+    "subtitle": "We'll email you a sign-in link — no password needed.",
+    "email": "Email",
+    "sendLink": "Send link",
+    "sending": "Sending…",
+    "linkSent": "Check {email} for your sign-in link.",
+    "signOut": "Sign out",
+    "errors": {
+      "invalid_link": "That link was incomplete. Try again.",
+      "expired_link": "That link has expired or was already used. Request a new one."
+    }
   }
 }
