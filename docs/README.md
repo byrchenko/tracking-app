@@ -6,6 +6,7 @@
 | [`plan.md`](plan.md) | The technical plan — stack, data model, offline architecture, build phases, risks. Written before implementation. |
 | [`architecture.md`](architecture.md) | How the code is actually organized, and why. Updated as the build progresses. |
 | [`development.md`](development.md) | Setup, commands, environment variables, how to run tests. |
+| [`contributing.md`](contributing.md) | Branching model, commit conventions, how releases happen. |
 | [`decisions/`](decisions/) | Architecture decision records — one file per decision that would otherwise get re-litigated. |
 
 ## Reading order
